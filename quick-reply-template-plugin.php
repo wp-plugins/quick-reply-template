@@ -112,7 +112,8 @@ function pw_quick_reply_template_options_page() {
 				<p>The first name of "Paul William" would be "Paul".</p>
 				<p>The first name of "King of Spain" would be "King".</p>
 			</blockquote>
-			<p><strong>%ID%</strong> is replaced with comment ID, which is useful if you want to link to the original comment using something like <code>&lt;a href=&quot;#comment-<strong>%ID%</strong>&quot;&gt;<strong>%NAME%</strong>&lt;/a&gt;</code>.</p>
+			<p><strong>%ID%</strong> is replaced with comment ID, which is useful if you want to link to the original comment using something like
+				<blockquote><code>&lt;a href=&quot;#comment-<strong>%ID%</strong>&quot;&gt;<strong>%NAME%</strong>&lt;/a&gt;</code></blockquote></p>
 		</div>
 	
 		<form method="post" action="options.php">
