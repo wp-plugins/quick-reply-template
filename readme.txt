@@ -36,3 +36,11 @@ Kaspars for adding the comment ID tag.
 6) Set your desired template.
 
 7) When you click reply in the admin comments page, your reply template will be automatically inserted.
+
+== Frequently Asked Questions ==
+
+= How can I link to the original comment? =
+
+The %ID% tag contains the comment id of the original comment. You can use this to link to the original. For example:
+
+<a href="#comment-%ID%">%NAME%</a>
