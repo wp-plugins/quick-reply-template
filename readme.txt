@@ -1,5 +1,5 @@
 === Quick Reply Template Plugin ===
-Contributors: paul1999, Matt Wiebe
+Contributors: paul1999
 Requires at least: 2.8
 Tested up to: 2.8.1
 Stable tag: trunk
@@ -25,8 +25,9 @@ The template can contain the comment author's fullname, first name, link to the 
 
 0.1 - Initial Release
 
-= Credits =
+== Credits ==
 
+Matt Wiebe for adding improved javascript.
 
 Kaspars for adding the comment ID tag.
 
