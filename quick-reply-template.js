@@ -1,41 +1,44 @@
-jQuery(".reply a").click(function(){
+if (typeof commentReply != 'undefined'){
+	commentReply.overloaded_comment_reply_open_func = commentReply.open;
 	
+	commentReply.open = function(id,p,a){ 
+	    var return_value = this.overloaded_comment_reply_open_func(id,p,a);
 
-	// name is found in different elements on different pages
-	if (jQuery("body").hasClass("index-php") ) { // dashboard page
-		
-		var commentParent = jQuery(this).parents(".comment");
-		var name = jQuery.trim(commentParent.find("cite.comment-author").text() );
+			// console.log(id+" : "+p+" : "+a);
 
-	} else if (jQuery("body").hasClass("edit-comments-php") ) { // edit comments page
+			if(a == "edit"){
+				return return_value;
+			}
+	
+			if(quick_reply_template_parent_file == "index.php"){
+				var css_selector = "cite";
+			}else{
+				var css_selector = "strong";
+			}
+				
+			var name = jQuery("#comment-"+id+" "+css_selector)[0].innerHTML;
 
-		var commentParent = jQuery(this).parents("tr");
-		var name = jQuery.trim(commentParent.find(".author strong").text() );
+			// strip off leading whitespace
+			name = name.replace(/^\s+/, '');
+			
+			if(name.match(/img|IMG/)){
+				name = name.match(/>\s(.*)/)[1];
+			}
 
-	} else { // let's not do things elsewhere
-		return false;
+			// Strip HTML from name
+			name = name.replace(/<\/?[^>]+>/gi, '');
+
+			var first_name = name;
+			if(name.match(/ /) != null){
+				first_name = name.match(/(.*?) /)[1];
+			}
+			
+			var content = quick_reply_template_content;
+			content = content.replace(/%NAME%/g, name);
+			content = content.replace(/%FIRST_NAME%/g, first_name);
+			content = content.replace(/%ID%/g, id);
+	    		
+			jQuery('#replycontent')[0].value = content;
+			return return_value;
 	}
-	
-	// Strip HTML from name
-	name = name.replace(/<\/?[^>]+>/gi, '');
-	
-	// the ID of the comment is:
-	var id = commentParent.attr("id");
-	
-	var first_name = name;
-	if(name.match(/ /) != null){ // get a first name if it's longer than 1 character
-		first_name = name.match(/(.*?) /)[1];
-	}
-	
-	// the user-defined insertion string
-	var content = quick_reply_template_content;
-	
-	// some replacements
-	content = content.replace(/%NAME%/g, name);
-	content = content.replace(/%ID%/g, id);
-	content = content.replace(/%FIRST_NAME%/g, first_name);
-	
-	// insert into form
-	jQuery("#replycontent").attr("value", content);
-	
-});
+}

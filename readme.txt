@@ -15,19 +15,29 @@ The template can contain the comment author's fullname, first name, link to the 
 
 == Changelog ==
   
-0.5 - Updated for WP 2.8. Uses wp_enqueue_script API. Thanks to Matt Wiebe for improved javascript code.
+= 0.6 =
 
-0.4 - Changed default reply template.
+Updated for WP 2.8. Uses wp_enqueue_script API. Thanks to Matt Wiebe for javascript code.
 
-0.3 - Improved options.
+= 0.4 =
 
-0.2 - Added comment ID to the list of available tags. Strip HTML from name and first name. Add single empty space after content, so that user can start typing reply immediately.
+Changed default reply template.
 
-0.1 - Initial Release
+= 0.3 =
+
+Improved options.
+
+= 0.2 =
+
+Added comment ID to the list of available tags. Strip HTML from name and first name. Add single empty space after content, so that user can start typing reply immediately.
+
+= 0.1 =
+
+Initial Release
 
 == Credits ==
 
-Matt Wiebe for adding improved javascript.
+Matt Wiebe for javascript code.
 
 Kaspars for adding the comment ID tag.
 
