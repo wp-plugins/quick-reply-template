@@ -1,22 +1,29 @@
 === Quick Reply Template Plugin ===
-Contributors: paul1999
-Requires at least: 2.7
-Tested up to: 2.7
+Contributors: paul1999, Matt Wiebe
+Requires at least: 2.8
+Tested up to: 2.8.1
 Stable tag: trunk
-Tags: reply, template, quick, comments, author, 2.7, admin
+Tags: reply, template, quick, comments, author, 2.8, admin
 
-Allows you to specify a reply template for the quick reply feature in Wordpress 2.7+.
+Allows you to specify a reply template for the quick reply feature in Wordpress 2.9+.
 
 == Description ==
 
-This plugin allows you to specify a default text for the "quick reply" feature in Wordpress 2.7+. 
+This plugin allows you to specify a default text for the "quick reply" feature in Wordpress 2.8+. 
 
 The template can contain the comment author's fullname, first name, link to the original comment and any other characters, spaces, symbols etc.
 
-= Changelog =
+== Changelog ==
+  
+0.5 - Updated for WP 2.8. Uses wp_enqueue_script API. Thanks to Matt Wiebe for improved javascript code.
 
+0.4 - Changed default reply template.
 
-View the changelog [here](http://svn.wp-plugins.org/quick-reply-template/trunk/CHANGELOG).
+0.3 - Improved options.
+
+0.2 - Added comment ID to the list of available tags. Strip HTML from name and first name. Add single empty space after content, so that user can start typing reply immediately.
+
+0.1 - Initial Release
 
 = Credits =
 

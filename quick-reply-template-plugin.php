@@ -2,8 +2,8 @@
 /*
 Plugin Name: Quick Reply Template Plugin
 Plugin URI: http://www.entropytheblog.com/blog/2008/12/wordpress-quick-reply-template-plugin/
-Description: Allows you to specify a reply template for the quick reply feature in Wordpress 2.7+. The template can contain the comment author's fullname, firstname, link to the original comment and any other characters.
-Version: 0.4
+Description: Allows you to specify a reply template for the quick reply feature in Wordpress 2.8+. The template can contain the comment author's fullname, firstname, link to the original comment and any other characters.
+Version: 0.5
 Author: Paul William
 Author URI: http://www.entropytheblog.com/blog/
 
@@ -36,56 +36,20 @@ function pw_quick_reply_template_comment_script(){
 
 	echo <<<SCRIPT
 	<script type='text/javascript'>
-	if (typeof commentReply != 'undefined'){
-		commentReply.overloaded_comment_reply_open_func = commentReply.open
-		
-		commentReply.open = function(id,p,a){ 
-		    var return_value = this.overloaded_comment_reply_open_func(id,p,a);
-
-				// console.log(id+" : "+p+" : "+a)
-
-				if(a == "edit"){
-					return return_value;
-				}
-		
-				if('$parent_file' == "index.php"){
-					var css_selector = "cite";
-				}else{
-					var css_selector = "strong";
-				}
-					
-				var name = jQuery("#comment-"+id+" "+css_selector)[0].innerHTML;
- 
-				// strip off leading whitespace
-				name = name.replace(/^\s+/, '');
-				
-				if(name.match(/img|IMG/)){
-					name = name.match(/>\s(.*)/)[1];
-				}
-
-				// Strip HTML from name
-				name = name.replace(/<\/?[^>]+>/gi, '');
-
-				var first_name = name;
-				if(name.match(/ /) != null){
-					first_name = name.match(/(.*?) /)[1];
-				}
-				
-				var content = "$content ";
-				content = content.replace(/%NAME%/g, name);
-				content = content.replace(/%FIRST_NAME%/g, first_name);
-				content = content.replace(/%ID%/g, id);
-		    		
-				jQuery('#replycontent')[0].value = content;
-				return return_value;
-		}
-	}
+	
+	var quick_reply_template_content = "$content ";
+	
 	</script>
 	
 SCRIPT;
 }
 
 add_action( "admin_footer", 'pw_quick_reply_template_comment_script', 100);
+
+function pw_quick_reply_template_init() {
+    wp_enqueue_script('quick-reply-template','/' . PLUGINDIR . '/quick-reply-template/quick-reply-template.js',array('admin-comments'),'0.5' );            
+}    
+add_action('init', pw_quick_reply_template_init);
 
 // Admin menu
 
