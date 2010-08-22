@@ -1,7 +1,7 @@
 === Quick Reply Template Plugin ===
 Contributors: paul1999
 Requires at least: 2.8
-Tested up to: 2.8.1
+Tested up to: 3.0.1
 Stable tag: trunk
 Tags: reply, template, quick, comments, author, 2.8, admin
 
